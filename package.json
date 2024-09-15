@@ -12,7 +12,9 @@
     "mongoose": "^8.6.2",
     "next": "14.2.9",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sweetalert2": "^11.14.0",
+    "sweetalert2-react-content": "^5.0.7"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

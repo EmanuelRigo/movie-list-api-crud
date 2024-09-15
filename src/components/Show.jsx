@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import BtnDelete from "./BtnDelete";
 
 const getData = async () => {
   try {
@@ -31,6 +32,7 @@ const Show = async () => {
             >
               Edit
             </Link>
+            <BtnDelete id={element._id}></BtnDelete>
           </div>
         </div>
       ))}

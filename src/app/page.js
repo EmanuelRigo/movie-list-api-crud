@@ -15,10 +15,6 @@ export default function Home() {
         ></Image>
       </div>
       <Show></Show>
-      <Show></Show>
-      <Show></Show>
-      <Show></Show>
-      <Show></Show>
     </section>
   );
 }
