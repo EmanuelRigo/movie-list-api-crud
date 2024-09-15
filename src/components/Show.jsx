@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const getData = async () => {
   try {
@@ -9,8 +10,32 @@ const getData = async () => {
   }
 };
 
-const Show = () => {
-  return <div>Show</div>;
+const Show = async () => {
+  const { data } = await getData();
+  console.log(data);
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {data.map((element) => (
+        <div className="p-3 bg-red-500 my-4">
+          <div>
+            <h2 className="font-bold text-2xl text-slate-700">
+              {element.title}
+            </h2>
+            <p>{element._id}</p>
+          </div>
+          {/* botones de acciones */}
+          <div className="flex mt-4 space-x-3 md:mt-6">
+            <Link
+              href={`/edit/${element._id}`}
+              className="text-blue-800 font-bold"
+            >
+              Edit
+            </Link>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default Show;
