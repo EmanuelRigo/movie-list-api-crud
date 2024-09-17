@@ -10,28 +10,16 @@ const getData = async () => {
   }
 };
 
-const { data } = await getData();
-console.log(data);
-
 export const MovieList = async () => {
   const { data } = await getData();
-  console.log(data);
 
   return (
-    <div className="p-3 flex flex-col">
+    <div className="p-3 flex flex-col h-screen lg:h-full">
       <p className="text-2xl p-1 text-white">MovieList</p>
-      <div className="relative my-4 rounded-lg flex-grow  scrollbar-hidden overflow-auto">
-        <div className="w-full p-1">
-          {data.map((element) => (
-            <div className="bg-gray-700 mb-3 p-4 rounded-lg outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer flex items-center justify-between">
-              <p className="text-white-500">{element.title}</p>
-              <Link
-                className="bg-orange-500 p-3 rounded-lg hover:bg-orange-700"
-                href={`/edit/${element._id}`}
-              >
-                edit
-              </Link>
-            </div>
+      <div className="relative my-4 rounded-lg flex-grow scrollbar-hidden overflow-auto">
+        <div className="w-full absolute p-1">
+          {data.map((element, index) => (
+            <CardRow movie={element} key={index} />
           ))}
         </div>
       </div>
