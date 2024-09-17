@@ -1,4 +1,5 @@
 import { MovieList } from "@/components/list/MovieList";
+import { FooterMainMenu } from "@/components/menu/FooterMainMenu";
 import styles from "./page.module.css";
 import Show from "@/components/Show";
 
@@ -10,6 +11,9 @@ export default function Home() {
         style={{ gridTemplateColumns: "1fr 1fr 25rem" }}
       >
         <div className="h-full flex flex-col justify-between p-4 mb-8 lg:mb-auto">
+          <FooterMainMenu></FooterMainMenu>
+        </div>
+        <div className="h-full">
           <MovieList></MovieList>
         </div>
       </div>

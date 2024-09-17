@@ -23,7 +23,7 @@ export const MovieList = async () => {
       <div className="relative my-4 rounded-lg flex-grow  scrollbar-hidden overflow-auto">
         <div className="w-full p-1">
           {data.map((element) => (
-            <div className="bg-gray-700 mb-3 p-4 rounded-lg outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer flex items-center">
+            <div className="bg-gray-700 mb-3 p-4 rounded-lg outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer flex items-center justify-between">
               <p className="text-white-500">{element.title}</p>
               <Link
                 className="bg-orange-500 p-3 rounded-lg hover:bg-orange-700"
