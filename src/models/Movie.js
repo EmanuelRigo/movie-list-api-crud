@@ -116,4 +116,4 @@ const movieSchema = new mongoose.Schema(
 
 // Check if the model is already compiled or create a new one
 export const MovieModel =
-  mongoose.models.Movie || mongoose.model("Movie", movieSchema);
+  mongoose?.models?.Movie || mongoose.model("Movie", movieSchema);

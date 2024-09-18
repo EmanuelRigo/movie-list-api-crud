@@ -1,40 +1,41 @@
 "use client";
-import React from "react";
-import { useRouter } from "next/navigation";
 import Form from "@/components/Form";
-import { PUT } from "@/app/api/movie/[id]/route";
-
+import { useRouter } from "next/navigation";
 const uri = "http://localhost:3000/api/movie";
 
 const getDataById = async (id) => {
   try {
-    const responose = await fetch(`${uri}/${id}`, { cache: "no-store" });
-    if (!responose.ok) {
-      throw new Error("failed to update.");
+    const response = await fetch(`${uri}/${id}`, { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error("Failed to update.");
     }
-    return responose.json();
+    return response.json();
   } catch (error) {
-    console.log("error:", error);
+    console.log("Error : ", error);
   }
 };
 
 const Edit = async ({ params }) => {
   const router = useRouter();
+
   const id = params.id;
   const { data } = await getDataById(id);
-  console.log("documento: " + JSON.stringify(data));
+  //console.log("documento completo :"+JSON.stringify(data)); //recibo el documento
+  //const {name, age} = data
 
   const onSubmitEdit = async (formData) => {
+    console.log("formData:", formData);
     const { name, age } = formData;
     try {
-      const responose = await fetch(`${uri}/${id}`, {
+      const response = await fetch(`${uri}/${id}`, {
         method: "PUT",
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ nameL: name, age: age }),
+        body: JSON.stringify({ name: name, age: age }),
       });
-      if (!responose.ok) {
+
+      if (!response.ok) {
         throw new Error("Failed to update.");
       }
       router.refresh();
@@ -43,9 +44,10 @@ const Edit = async ({ params }) => {
       console.log(error);
     }
   };
+
   return (
     <div>
-      <Form onSubmitForm={onSubmitEdit} formValues={data}></Form>
+      <h1 className="text-white">{data.title}</h1>
     </div>
   );
 };
