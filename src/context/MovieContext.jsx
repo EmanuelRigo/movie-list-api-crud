@@ -13,7 +13,7 @@ export const useMovieContext = () => {
 };
 
 const MovieProvider = ({ children }) => {
-  const [movie, setMovie] = useState([]);
+  const [movie, setMovie] = useState(null);
 
   const updateCardMovie = (movie) => {
     setMovie(movie);

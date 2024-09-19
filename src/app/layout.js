@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import NavBar from "@/components/NavBar";
+
 import MovieProvider from "@/context/MovieContext";
 
 const geistSans = localFont({
@@ -25,10 +25,9 @@ export default function RootLayout({ children }) {
       <MovieProvider>
         <body className={`${geistSans.variable} ${geistMono.variable} `}>
           <div className="h-screen w-screen flex items-center">
-            {/* <NavBar></NavBar> */}
             <div>{children}</div>
           </div>
-        </body>{" "}
+        </body>
       </MovieProvider>
     </html>
   );

@@ -8,7 +8,6 @@ export const FooterMainMenu = () => {
   const router = useRouter();
 
   const pathname = usePathname();
-  console.log(pathname);
 
   return (
     <div className="w-full flex gap-4 justify-between ">

@@ -14,12 +14,11 @@ export const MovieList = async () => {
   const { data } = await getData();
 
   return (
-    <div className="p-3 flex flex-col h-screen lg:h-full">
-      <p className="text-2xl p-1 text-white">MovieList</p>
+    <div className=" flex flex-col h-screen lg:h-full ">
       <div className="relative my-4 rounded-lg flex-grow scrollbar-hidden overflow-auto">
-        <div className="w-full absolute p-1">
-          {data.map((element, index) => (
-            <CardRow movie={element} key={index} />
+        <div className="w-full absolute p-2">
+          {data.map((element) => (
+            <CardRow movie={element} key={element._id} />
           ))}
         </div>
       </div>
