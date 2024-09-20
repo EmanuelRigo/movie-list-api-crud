@@ -20,6 +20,16 @@ const EditButtons = ({ id, movie }) => {
     }
   };
 
+  const onSubmitDelete = async () => {
+    const response = await fetch(`${uri}/${id}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      router.refresh();
+      router.push("/");
+    }
+  };
+
   const onSubmitEdit = async (movie) => {
     const { formats } = movie;
     try {
@@ -42,12 +52,20 @@ const EditButtons = ({ id, movie }) => {
   };
 
   return (
-    <button
-      onClick={checkFormats}
-      className="p-5 bg-orange-500 rounded-lg w-full text-black"
-    >
-      Terminar
-    </button>
+    <div className="flex">
+      <button
+        onClick={checkFormats}
+        className="p-5 bg-orange-500 rounded-lg w-full text-black me-4"
+      >
+        Terminar
+      </button>
+      <button
+        onClick={onSubmitDelete}
+        className="p-5 bg-red-500 rounded-lg w-full text-black"
+      >
+        Eliminar
+      </button>
+    </div>
   );
 };
 
