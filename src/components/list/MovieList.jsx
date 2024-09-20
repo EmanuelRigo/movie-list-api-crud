@@ -10,6 +10,12 @@ const getData = async () => {
   }
 };
 
+function ordenarPorTitulo(arr) {
+  return arr.sort((a, b) => {
+    return a.title.localeCompare(b.title);
+  });
+}
+
 export const MovieList = async () => {
   const { data } = await getData();
 
@@ -17,7 +23,7 @@ export const MovieList = async () => {
     <div className=" flex flex-col h-screen lg:h-full ">
       <div className="relative my-4 rounded-lg flex-grow scrollbar-hidden overflow-auto">
         <div className="w-full absolute p-2">
-          {data.map((element) => (
+          {ordenarPorTitulo(data).map((element) => (
             <CardRow movie={element} key={element._id} />
           ))}
         </div>
