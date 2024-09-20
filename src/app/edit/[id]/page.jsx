@@ -1,15 +1,18 @@
 import EditMovie from "@/components/add-movie/EditMovie";
 
+// URL base de la API
 const uri = "http://localhost:3000/api/movie";
+let data = null;
 
-// Function to fetch data on the server
+// Función para obtener datos del servidor
 const getDataById = async (id) => {
   try {
+    console.log("/////////////", "pageEdit", "/////////////");
     const response = await fetch(`${uri}/${id}`, { cache: "no-store" });
     if (!response.ok) {
       throw new Error("Failed to fetch data.");
     }
-    const data = await response.json();
+    data = await response.json();
     return data;
   } catch (error) {
     console.error("Error: ", error);
@@ -17,45 +20,20 @@ const getDataById = async (id) => {
   }
 };
 
-// Server component
+// Componente de servidor
 const Edit = async ({ params }) => {
   const { id } = params;
-  const data = await getDataById(id); // Data is fetched here
+  const data = await getDataById(id); // Se obtienen los datos aquí
+  console.log("hola data///////////");
+  console.log("////////", data.title);
 
-  const onSubmitEdit = async (formData) => {
-    const { name, age } = formData;
-    try {
-      const response = await fetch(`${uri}/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name: name, age: age }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to update.");
-      }
-      // Handle redirection after successful update
-      return new Response(null, { status: 302, headers: { Location: "/" } });
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  // Handling the case when data is not available
+  // Si no hay datos disponibles, renderiza un mensaje
   if (!data) {
-    return (
-      <div>
-        {console.log(data)}
-        <div>No data available</div>
-        {/* Rendering the EditMovie component and passing the data */}
-      </div>
-    );
+    console.log("No data available:", data); // Solo se llama cuando `data` es null
+    return <div>No data available</div>;
   }
-
-  // Rendering the EditMovie component when data is available
-  return <EditMovie movie={data} />;
+  console.log(data.data.title);
+  return <EditMovie movie={data.data} />;
 };
 
 export default Edit;
