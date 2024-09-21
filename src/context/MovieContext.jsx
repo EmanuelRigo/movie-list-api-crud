@@ -14,6 +14,7 @@ export const useMovieContext = () => {
 
 const MovieProvider = ({ children }) => {
   const [movie, setMovie] = useState(null);
+  const [movieList, setMovieList] = useState([]);
 
   const updateCardMovie = (movie) => {
     setMovie(movie);
@@ -23,6 +24,8 @@ const MovieProvider = ({ children }) => {
   const value = {
     movie,
     updateCardMovie,
+    movieList,
+    setMovieList,
   };
 
   return <Provider value={value}>{children}</Provider>;
