@@ -13,12 +13,9 @@ const getData = async () => {
 
 export const MovieList = async () => {
   const { data } = await getData();
-
   return (
-    <div className=" flex flex-col h-screen lg:h-full ">
-      <div className="relative my-4 rounded-lg flex-grow scrollbar-hidden overflow-auto">
-        <MovieListClient list={data}></MovieListClient>
-      </div>
+    <div className="flex flex-col h-screen lg:h-full py-4 ">
+      <MovieListClient list={data}></MovieListClient>
     </div>
   );
 };

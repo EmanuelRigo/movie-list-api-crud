@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { movieContext } from "@/context/MovieContext";
 
 const OrderListButtons = () => {
-  const { setMovieList, movieList } = useContext(movieContext);
+  const { setMovieList, movieList, setMovie } = useContext(movieContext);
 
   function ordenarPorTitulo() {
     const sortedList = [...movieList].sort((a, b) => {
@@ -20,8 +20,14 @@ const OrderListButtons = () => {
     console.log(movieList);
   }
 
+  function obtenerObjetoAleatorio() {
+    const indiceAleatorio = Math.floor(Math.random() * movieList.length);
+    const objetoAleatorio = movieList[indiceAleatorio];
+    setMovie(objetoAleatorio);
+  }
+
   return (
-    <div className="flex justify-between mb-4">
+    <div className="flex justify-between px-1 mb-3">
       <button
         className="bg-blue-700 hover:bg-blue-900 text-white p-2 rounded"
         onClick={ordenarPorFecha}
@@ -33,6 +39,12 @@ const OrderListButtons = () => {
         onClick={ordenarPorTitulo}
       >
         Ordenar por título
+      </button>
+      <button
+        className="bg-blue-700 hover:bg-blue-900 text-white p-2 rounded"
+        onClick={obtenerObjetoAleatorio}
+      >
+        Random
       </button>
     </div>
   );

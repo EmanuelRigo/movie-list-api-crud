@@ -23,6 +23,7 @@ const MovieProvider = ({ children }) => {
 
   const value = {
     movie,
+    setMovie,
     updateCardMovie,
     movieList,
     setMovieList,
