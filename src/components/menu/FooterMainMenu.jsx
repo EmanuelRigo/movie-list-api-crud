@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { CiCircleList, CiSquarePlus } from "react-icons/ci";
+import SearchBar from "./SearchBar";
 
 export const FooterMainMenu = () => {
   const router = useRouter();
@@ -10,7 +11,7 @@ export const FooterMainMenu = () => {
   const pathname = usePathname();
 
   return (
-    <div className="w-full flex gap-4 justify-between ">
+    <div className="w-full flex flex-col gap-4 justify-between ">
       {pathname == "/" ? (
         <Link
           style={{ fontSize: "4rem" }}
@@ -29,6 +30,9 @@ export const FooterMainMenu = () => {
       >
         <CiSquarePlus />
       </Link>
+      <div>
+        <SearchBar></SearchBar>
+      </div>
     </div>
   );
 };
