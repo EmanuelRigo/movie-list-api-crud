@@ -12,8 +12,13 @@ const SearchBar = ({ movies }) => {
     setSearchTerm(value);
 
     // Buscar el primer objeto que tiene la propiedad `title` coincidente
+    const normalizeString = (str) =>
+      str.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Elimina acentos y caracteres diacríticos
+
     const matchedMovie = movieList.find((movie) =>
-      movie.title.toLowerCase().includes(value.toLowerCase())
+      normalizeString(movie.title.toLowerCase()).startsWith(
+        normalizeString(value.toLowerCase())
+      )
     );
 
     // Si encuentra un objeto, hace setMovie con el objeto encontrado
